@@ -3,7 +3,7 @@ class CreateDocuments < ActiveRecord::Migration[5.2]
     create_table :documents do |t|
       t.integer :user_id
       t.integer :category_id
-      t.string :status
+      t.string :status, default: 0
 
       t.timestamps
     end
