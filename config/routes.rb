@@ -8,8 +8,8 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
-
   namespace :admins do
     resources :dashboards, only: :index
+    resources :categories
   end
 end

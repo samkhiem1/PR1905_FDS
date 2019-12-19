@@ -1,0 +1,8 @@
+<%= (provide :title, 'new') %>
+<%= provide :button_text, "create" %>
+<h1>Create Category</h1>
+<div class="row justify-content-center">
+  <div class="col-9">
+    <%= render "form", links: admins_categories_path%>
+  </div>
+</div>
