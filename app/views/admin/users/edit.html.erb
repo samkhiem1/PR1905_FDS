@@ -1,0 +1,16 @@
+<% provide(:title, 'Edit user') %>
+<%= form_for([:admin, @user])  do |f| %>
+ <h1> <%= @user.email %> </h1>
+  <div class="field">
+   <br>
+    <% if @user.admin? %>
+      <%= f.label "set to normal user" %>
+      <%= f.check_box :admin,{class:"form-check-input", type:"checkbox"},false %>
+    <% else %>
+      <%= f.label "set admin" %>
+      <%= f.check_box :admin,{class:"form-check-input", type:"checkbox"},true %>
+    <% end %>
+     </br>
+  </div>
+    <%= f.submit %>
+<% end %>
