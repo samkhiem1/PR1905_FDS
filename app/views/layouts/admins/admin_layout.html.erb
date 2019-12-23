@@ -4,14 +4,14 @@
     <title>Pr1905</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <title><%= yield(:title) %> | E Document</title>
+    <title><%= yield(:title) %> | Admin E Document</title>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= render 'layouts/shim' %>
   </head>
 
   <body>
-    <%= render "layouts/navbar" %>
+    <%= render "layouts/admins/navbar" %>
     <% flash.each do |message_type, message| %>
       <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
     <% end %>
