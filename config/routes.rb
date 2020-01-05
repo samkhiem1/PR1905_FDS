@@ -8,6 +8,9 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
+  resources :documents, only: [:index, :new, :create, :destroy, :show] do
+    resources :comments, only: [:create, :destroy]
+  end
   namespace :admins do
     resources :dashboards, only: :index
     resources :categories

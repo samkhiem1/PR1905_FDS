@@ -1,0 +1,29 @@
+<div class="container">
+  <%= search_form_for @search, url: root_path do |f| %>
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name_cont %>
+  </div>
+  <div class="action">
+    <%= f.submit "Search" %>
+  </div>
+  <% end %>
+<div class="container">
+  <%= link_to "New Document", new_document_path %>
+  <table border="3">
+    <thead>
+      <tr>
+        <th>Document name</th>
+        <th>Download Link</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @documents.each do |document| %>
+        <tr>
+          <td><%= link_to document.name, document_path(document.id) %></td>
+          <td><%= link_to "Download", document.attachment_url %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

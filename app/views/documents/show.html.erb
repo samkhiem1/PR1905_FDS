@@ -1,0 +1,6 @@
+<tr>
+  <td><%= @document.name %></td>
+  <td><%= link_to "Download", @document.attachment_url %></td>
+</tr>
+<%= render "comments/comments"  %>
+<%= render "comments/form" %>
