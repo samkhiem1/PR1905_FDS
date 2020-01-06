@@ -29,3 +29,6 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+/public/uploads
+/e_document_system_test
+/e_document_system_dev

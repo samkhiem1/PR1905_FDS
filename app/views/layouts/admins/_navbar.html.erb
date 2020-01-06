@@ -1,9 +1,9 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
-    <%= link_to "Admin E Document", root_path, id: "logo" %>
+    <%= link_to "Admin E Document", admins_dashboards_path, id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Admin Home", root_path %></li>
+        <li><%= link_to "Admin Home", admins_dashboards_path %></li>
         <% if admin_signed_in? %>
           <li><%= link_to "Users", '#' %></li>
           <li class="dropdown">
