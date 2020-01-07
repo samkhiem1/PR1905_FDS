@@ -15,4 +15,5 @@ Rails.application.routes.draw do
     resources :dashboards, only: :index
     resources :categories
   end
+  mount PdfjsViewer::Rails::Engine => "/pdfjs", as: 'pdfjs'
 end
