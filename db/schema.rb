@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2019_12_23_121926) do
   create_table "documents", force: :cascade do |t|
     t.integer "user_id"
     t.integer "category_id"
-    t.string "status", default: "0"
+    t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"

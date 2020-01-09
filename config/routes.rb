@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   namespace :admins do
     resources :dashboards, only: :index
     resources :categories
+    resources :documents, only: [:index, :update, :destroy]
   end
   mount PdfjsViewer::Rails::Engine => "/pdfjs", as: 'pdfjs'
 end

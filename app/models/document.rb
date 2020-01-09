@@ -6,4 +6,5 @@ class Document < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :description, presence: true
   validates :attachment, presence: true
+  enum status: [:pending, :legal, :illegal]
 end
