@@ -5,7 +5,7 @@ ruby '2.6.3'
 gem 'slim-rails'
 gem 'ransack'
 gem 'carrierwave'
-gem 'bootstrap-sass', '3.3.7'
+gem 'bootstrap-sass', '3.4.1'
 gem "paranoia"
 gem 'devise'
 gem 'jquery-rails'
