@@ -1,6 +1,7 @@
 <tr>
   <td><%= @document.name %></td>
   <td><%= link_to "Download", @document.attachment_url %></td>
+  <td><iframe src="<%= pdfjs.full_path(file: @document.attachment_url) %>" style="width: 550px; height: 700px;"></iframe></td>
 </tr>
 <%= render "comments/comments"  %>
 <%= render "comments/form" %>

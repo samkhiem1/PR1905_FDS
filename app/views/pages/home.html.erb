@@ -22,6 +22,7 @@
         <tr>
           <td><%= link_to document.name, document_path(document.id) %></td>
           <td><%= link_to "Download", document.attachment_url %></td>
+          <td><iframe src="<%= pdfjs.full_path(file: document.attachment_url) %>" style="width: 550px; height: 780px;"></iframe></td>
         </tr>
       <% end %>
     </tbody>
