@@ -31,6 +31,6 @@ class DocumentsController < ApplicationController
   end
 private
   def document_params
-    params.require(:document).permit(:name, :attachment, :description)
+    params.require(:document).permit(:name, :attachment, :description, :status)
   end
 end

@@ -1,12 +1,12 @@
 <div class="container">
   <%= search_form_for @search, url: root_path do |f| %>
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name_cont %>
-  </div>
-  <div class="action">
-    <%= f.submit "Search" %>
-  </div>
+    <div class="field">
+      <%= f.label :name %>
+      <%= f.text_field :name_cont %>
+    </div>
+    <div class="action">
+      <%= f.submit "Search" %>
+    </div>
   <% end %>
 <div class="container">
   <%= link_to "New Document", new_document_path %>
@@ -19,11 +19,13 @@
     </thead>
     <tbody>
       <% @documents.each do |document| %>
-        <tr>
-          <td><%= link_to document.name, document_path(document.id) %></td>
-          <td><%= link_to "Download", document.attachment_url %></td>
-          <td><iframe src="<%= pdfjs.full_path(file: document.attachment_url) %>" style="width: 550px; height: 780px;"></iframe></td>
-        </tr>
+        <% if document.legal? %>
+          <tr>
+            <td><%= link_to document.name, document_path(document.id) %></td>
+            <td><%= link_to "Download", document.attachment_url %></td>
+            <td><iframe src="<%= pdfjs.full_path(file: document.attachment_url) %>" style="width: 550px; height: 780px;"></iframe></td>
+          </tr>
+        <% end %>
       <% end %>
     </tbody>
   </table>
