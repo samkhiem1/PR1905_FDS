@@ -8,7 +8,7 @@
       <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
         <div class="panel panel-info">
           <div class="panel-heading">
-            <h3 class="panel-title">Documents</h3>
+            <h3 class="panel-title">Document</h3>
           </div>
           <div class="panel-body">
             <div class="row">
@@ -25,17 +25,13 @@
                     </tr>
                     <tr>
                       <td>Status: </td>
-                      <td > <%= document.status %> </td>
+                      <td id="status-document-<%= document.id%>"> <%= document.status %> </td>
                     </tr>
                   </tbody>
                 </table>
                   <% if document.pending? %>
-                    <%= button_to "legal", admins_document_path(document, legal: true), method: :patch %>
-                    <%= button_to "illegal", admins_document_path(document, illegal: true), method: :patch %>
-                  <% elsif document.legal? %>
-                    <%= button_to "illegal", admins_document_path(document, illegal: true), method: :patch %>
-                  <% else %>
-                    <%= button_to "legal", admins_document_path(document, legal: true), method: :patch %>
+                    <%= button_to "legal", admins_document_path(document, legal: true), method: :patch, remote: true, class: "button-legal-#{document.id}" %>
+                    <%= button_to "illegal", admins_document_path(document, illegal: true), method: :patch, remote: true, class: "button-legal-#{document.id}" %>
                   <% end %>
               </div>
                 <%= link_to "Delete", admins_document_path(document), method: :delete, confirm: "Are you sure you want to delete #{document.name}?" %>

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   }
   resources :documents, only: [:index, :new, :create, :destroy, :show] do
     resources :comments, only: [:create, :destroy]
+    resources :downloads, only: :create
   end
   namespace :admins do
     resources :dashboards, only: :index
