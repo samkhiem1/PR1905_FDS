@@ -1,0 +1,6 @@
+<% if @result %>
+  $('.comment_section').prepend("<%= j render 'comments/comment', comment: @comment %> ")
+  $('#comment_content').val("");
+<% else %>
+  alert("comment failed")
+<% end %>

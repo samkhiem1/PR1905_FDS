@@ -1,0 +1,34 @@
+<div class="container-search">
+  <%= search_form_for @search, url: root_path do |f| %>
+    <div class="field form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name_cont, class: "form-control" %>
+    </div>
+    <div class="action">
+      <%= f.submit "Search", class: "btn btn-sm btn-primary btn-block" %>
+    </div>
+  <% end %>
+</div>
+<div class="container">
+  <%= link_to "New Document", new_document_path %>
+  <table>
+    <% @documents.each_slice(4) do |group_document| %>
+      <tr>
+        <% group_document.each do |document| %>
+          <% if document.legal? %>
+            <td>
+              <div class="card-document">
+                <%= image_tag(document.thumbnail || "default-thumb.jpeg",class: "card-img-top img-document-thumb" ) %>
+                <div class="card-body card-document-content">
+                  <h5 class="card-title card-text">
+                    <%= link_to document.name, document_path(document.id) %></h5>
+                 <%= link_to "download", document_downloads_path(document), method: :post, class: "btn btn-primary" %>
+                </div>
+              </div>
+            </td>
+          <% end %>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+</div>

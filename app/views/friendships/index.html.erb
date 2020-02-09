@@ -1,0 +1,19 @@
+<% @users.each do |user| %>
+  <% next if user == current_user %>
+  <div class="user">
+    <p>
+    <strong><%= link_to user.username, friendship_path(id: user) %></strong>
+      <% friendship = user.get_friendship(current_user) %>
+      <% if friendship.blank? %>
+        <%= link_to "Add Friend", friendships_path(friend_id: user), method: :post %>
+      <% elsif friendship.accept? %>
+        <%= link_to "Remove Friends.",friendship_path(friendship) , method: :delete %>
+      <% else %>
+        <%= link_to "Remove request Friend.",friendship_path(friendship) , method: :delete %>
+        <% if friendship.user_id != current_user.id %>
+          <%= link_to "Accept request friend.",friendship_path(friendship) , method: :patch %>
+        <% end %>
+      <% end %>
+    </p>
+  </div>
+<% end %>
