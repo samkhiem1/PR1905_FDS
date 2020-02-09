@@ -23,7 +23,7 @@ class FriendshipsController < ApplicationController
   def update
     @friendship = Friendship.find(params[:id])
     @friendship.accept!
-    flash[:success] = "You add friend with #{@friendship.username}"
+    flash[:success] = "You add friend with #{@friendship.user.username}."
     redirect_to friendships_path
   end
 

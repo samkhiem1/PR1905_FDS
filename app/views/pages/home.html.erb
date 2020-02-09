@@ -9,8 +9,7 @@
     </div>
   <% end %>
 </div>
-<div class="container">
-  <%= link_to "New Document", new_document_path %>
+<div class="container form-group">
   <table>
     <% @documents.each_slice(4) do |group_document| %>
       <tr>
