@@ -14,6 +14,7 @@
 #  deleted_at  :datetime
 #
 
+
 require 'test_helper'
 
 class DocumentTest < ActiveSupport::TestCase

@@ -27,9 +27,11 @@ class User < ApplicationRecord
   has_many :friends, through: :friendships
   enum status: [:actived, :baned]
 
+
   def username
     return email.split('@')[0].capitalize
   end
+
 
   def check_user_download
     downloads.where("created_at > ? AND created_at < ?", Time.now.beginning_of_month, Time.now.end_of_month).count

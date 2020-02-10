@@ -14,7 +14,6 @@
 #  phone                  :string
 #  total_coin             :integer
 #
-
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase

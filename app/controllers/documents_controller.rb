@@ -18,7 +18,6 @@ class DocumentsController < ApplicationController
       flash.now[:danger] = "You has been uploaded 10 documents in this month."
       render "new" and return
     end
-
     if @document.save
       UpdateThumbnailWorker.perform_at(0, @document.id)
       SendEmail.perform_at(0, @document.id)
