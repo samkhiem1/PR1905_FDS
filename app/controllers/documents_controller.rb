@@ -20,7 +20,7 @@ class DocumentsController < ApplicationController
     end
     if @document.save
       UpdateThumbnailWorker.perform_at(0, @document.id)
-      SendEmail.perform_at(0, @document.id)
+      SendMailUploadDocumentSuccessMailer.send_email(@document).deliver
       flash[:success]= "Successfully uploaded."
       redirect_to documents_path
     else
