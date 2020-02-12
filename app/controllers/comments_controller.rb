@@ -10,7 +10,11 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = Comment.find_by id: params[:id]
-    @comment.destroy
+    if @comment
+      @comment.destroy
+    else
+      @error_message = "Comment is not found"
+    end
   end
 
   private

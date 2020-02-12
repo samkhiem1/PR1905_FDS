@@ -1,32 +1,33 @@
-<div class="container">
+<div class="container-search">
   <%= search_form_for @search, url: root_path do |f| %>
-    <div class="field">
+    <div class="field form-group">
       <%= f.label :name %>
-      <%= f.text_field :name_cont %>
+      <%= f.text_field :name_cont, class: "form-control" %>
     </div>
     <div class="action">
-      <%= f.submit "Search" %>
+      <%= f.submit "Search", class: "btn btn-sm btn-primary btn-block" %>
     </div>
   <% end %>
-<div class="container">
-  <%= link_to "New Document", new_document_path %>
-  <table border="3">
-    <thead>
+</div>
+<div class="container form-group">
+  <table>
+    <% @documents.each_slice(4) do |group_document| %>
       <tr>
-        <th>Document name</th>
-        <th>Download Link</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @documents.each do |document| %>
-        <% if document.legal? %>
-          <tr>
-            <td><%= link_to document.name, document_path(document.id) %></td>
-            <td><%= link_to "Download", document.attachment_url %></td>
-            <td><iframe src="<%= pdfjs.full_path(file: document.attachment_url) %>" style="width: 550px; height: 780px;"></iframe></td>
-          </tr>
+        <% group_document.each do |document| %>
+          <% if document.legal? %>
+            <td>
+              <div class="card-document">
+                <%= image_tag(document.thumbnail || "default-thumb.jpeg",class: "card-img-top img-document-thumb" ) %>
+                <div class="card-body card-document-content">
+                  <h5 class="card-title card-text">
+                    <%= link_to document.name, document_path(document.id) %></h5>
+                 <%= link_to "download", document_downloads_path(document), method: :post, class: "btn btn-primary" %>
+                </div>
+              </div>
+            </td>
+          <% end %>
         <% end %>
-      <% end %>
-    </tbody>
+      </tr>
+    <% end %>
   </table>
 </div>

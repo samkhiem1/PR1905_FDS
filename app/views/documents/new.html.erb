@@ -1,14 +1,13 @@
-<div class="container">
+<div class="container-1">
   <%= form_for @document, html: {multipart: true} do |f| %>
     <%= render "shared/error_messages", object: f.object %>
       <%= f.label :name %>
-      <%= f.text_field :name %>
+      <%= f.text_field :name, class: "form-control form-group" %>
       <%= f.label :description %>
-      <%= f.text_field :description %>
-      <br><br>
+      <%= f.text_field :description, class: "form-control form-group" %>
       <%= f.label :attachment %>
-      <%= f.file_field :attachment %>
+      <%= f.file_field :attachment, accept: ".pdf, .docx" %>
       <br>
-      <%= f.submit "Save" %>
+      <%= f.submit "Save", class: "btn btn-primary" %>
     <% end %>
 </div>

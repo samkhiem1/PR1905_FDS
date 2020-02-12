@@ -1,0 +1,14 @@
+<div class="jumptron">
+  <h1 style="text-align: center;"> Chat</h1>
+  <div class="well" id="chatbox" style="width: 500px; border: solid 1px #222222 ; overflow-y: scroll; height: 400px;" >
+    <%= render partial: "messages/message", collection:  @messages, as: :message %>
+  </div>
+  <%= form_for @message, remote: true do |f| %>
+    <div class="input-group md-3">
+      <%= f.text_field :body, class: "form-control",  id: "message_body" %>
+    </div>
+    <div class="submit-content">
+      <%= f.submit "send", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

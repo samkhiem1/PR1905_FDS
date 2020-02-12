@@ -32,3 +32,7 @@
 /public/uploads
 /e_document_system_test
 /e_document_system_dev
+/public/thumb/*
+
+# Ignore application configuration
+/config/application.yml

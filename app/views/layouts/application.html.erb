@@ -4,6 +4,7 @@
     <title>Pr1905</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= action_cable_meta_tag %>
     <title><%= yield(:title) %> | E Document</title>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -16,7 +17,7 @@
       <div class="alert alert-<%= message_type %>" style="padding-top: 60px;"><%= message %></div>
     <% end %>
     <%= render "layouts/notice" %>
-    <div class="container">
+    <div class="container-page">
       <%= yield %>
     </div>
   </body>

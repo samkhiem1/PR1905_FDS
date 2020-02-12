@@ -1,1 +1,5 @@
-$("#comments_<%= @comment.id %>").remove();
+<% if @error_message %>
+  alert("<%= @error_message %>")
+<% else %>
+  $("#comments_<%= @comment.id %>").remove();
+<% end %>

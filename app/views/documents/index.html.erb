@@ -2,18 +2,17 @@
 <table border="3">
   <thead>
     <tr>
-      <th>Document name</th>
-      <th>Download Link</th>
-      <th>Action</th>
+      <th> Document name </th>
+      <th> Status </th>
+      <th> Action </th>
     </tr>
   </thead>
-
   <tbody>
     <% @documents.each do |document| %>
       <% if current_user && current_user == document.user %>
         <tr>
           <td><%= link_to document.name, document_path(document.id) %></td>
-          <td><%= link_to "Download", document.attachment_url %></td>
+          <td><%= document.status %></td>
           <td><%= link_to "Delete",  document, method: :delete, confirm: "Are you sure you want to delete #{document.name}?" %></td>
         </tr>
       <% end %>

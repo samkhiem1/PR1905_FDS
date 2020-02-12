@@ -25,17 +25,13 @@
                     </tr>
                     <tr>
                       <td>Status: </td>
-                      <td > <%= document.status %> </td>
+                      <td id="status-document-<%= document.id%>"> <%= document.status %> </td>
                     </tr>
                   </tbody>
                 </table>
                   <% if document.pending? %>
-                    <%= button_to "legal", admins_document_path(document, legal: true), method: :patch %>
-                    <%= button_to "illegal", admins_document_path(document, illegal: true), method: :patch %>
-                  <% elsif document.legal? %>
-                    <%= button_to "illegal", admins_document_path(document, illegal: true), method: :patch %>
-                  <% else %>
-                    <%= button_to "legal", admins_document_path(document, legal: true), method: :patch %>
+                    <%= button_to "legal", admins_document_path(document, legal: true), method: :patch, remote: true, class: "button-legal-#{document.id}" %>
+                    <%= button_to "illegal", admins_document_path(document, illegal: true), method: :patch, remote: true, class: "button-legal-#{document.id}" %>
                   <% end %>
               </div>
                 <%= link_to "Delete", admins_document_path(document), method: :delete, confirm: "Are you sure you want to delete #{document.name}?" %>
