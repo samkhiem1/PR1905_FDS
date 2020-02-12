@@ -1,7 +1,7 @@
 class DocumentsController < ApplicationController
   before_action :authenticate_user!, only: [:create, :destroy, :new]
   def index
-    @documents = Document.all
+    @documents = Document.includes(:user).all
   end
 
   def show
@@ -14,7 +14,13 @@ class DocumentsController < ApplicationController
 
   def create
     @document = current_user.documents.build(document_params)
+    if disallow_upload?
+      flash.now[:danger] = "You has been uploaded 10 documents in this month."
+      render "new" and return
+    end
     if @document.save
+      UpdateThumbnailWorker.perform_at(0, @document.id)
+      SendEmailForUploadDocumentSuccessWorker.perform_at(0, @document.id)
       flash[:success]= "Successfully uploaded."
       redirect_to documents_path
     else
@@ -32,5 +38,9 @@ class DocumentsController < ApplicationController
 private
   def document_params
     params.require(:document).permit(:name, :attachment, :description, :status)
+  end
+
+  def disallow_upload?
+    current_user.documents.created_in_month.legal.count > 10
   end
 end

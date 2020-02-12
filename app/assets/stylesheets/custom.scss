@@ -13,3 +13,68 @@
   color: #fff;
   text-decoration: none;
 }
+
+.login-form {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+
+  .login-icon {
+    text-align: center;
+
+    img {
+      width: 100px;
+    }
+  }
+}
+
+#formFooter {
+  margin-top: 10px;
+}
+
+#logbox {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.form-passwords{
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container-search {
+  width: 50%;
+  margin-right: auto;
+  margin-left: auto;
+}
+.container-1 {
+  width: 50%;
+  margin-right: auto;
+  margin-left: auto;
+}
+.img-document-thumb {
+  width: inherit;
+}
+
+.card-document-content{
+  text-align: center;
+  padding-bottom: 15px;
+  padding-top: 15px
+}
+.card-text {
+  text-align: left;
+  margin: 10px;
+  margin-top: 5px;
+}
+
+.container-page {
+  background: #f7f7f7;
+  width: 100%
+}
+.card-document{
+  width: 28rem;
+  margin: 10px;
+  background: white;
+}

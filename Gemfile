@@ -11,6 +11,10 @@ gem 'devise'
 gem 'jquery-rails'
 gem 'pry-rails'
 gem 'pdfjs_viewer-rails'
+gem 'rmagick'
+gem "sidekiq"
+gem 'whenever', require: false
+gem 'figaro'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.4'
 # Use sqlite3 as the database for Active Record
@@ -50,6 +54,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'annotate'
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'

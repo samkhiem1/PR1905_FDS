@@ -1,7 +1,11 @@
-<tr>
-  <td><%= @document.name %></td>
-  <td><%= link_to "Download", @document.attachment_url %></td>
-  <td><iframe src="<%= pdfjs.full_path(file: @document.attachment_url) %>" style="width: 550px; height: 700px;"></iframe></td>
-</tr>
-<%= render "comments/comments"  %>
-<%= render "comments/form" %>
+<div class="container">
+  <tr>
+    <td><h1><%= @document.name %></td></h1>
+      <td> <%= link_to "download", document_downloads_path(@document), method: :post %></td>
+    <td><iframe src="<%= pdfjs.full_path(file: @document.attachment_url) %>" style="width: 850px; height: 500px;"></iframe></td>
+  </tr>
+  <%= render "comments/comments"  %>
+  <% if user_signed_in? %>
+    <%= render "comments/form" %>
+  <% end %>
+</div>
