@@ -5,18 +5,19 @@ class Admins::DocumentsController < Admins::BaseController
 
   def update
     @document = Document.find_by id: params[:id]
-    if params[:legal]
-      @document.legal!
-      flash[:success] = "Document legal"
-    else
-      @document.illegal!
-      flash[:success] = "Document illegal"
+    unless @document
+      flash[:danger] = "Document is not found." and return
     end
-    redirect_to admins_documents_path
+    update_upload_document = UpdateUploadDocument.new(@document, params[:legal])
+    if update_upload_document.perform
+      flash[:success] = update_upload_document.message
+    else
+      flash[:danger] = update_upload_document.message
+    end
   end
 
   def destroy
-    @document = Document.find(params[:id])
+    @document = Document.find_by id: params[:id]
     @document.destroy
     flash[:success]= "Document deleted"
     redirect_to admins_documents_path
