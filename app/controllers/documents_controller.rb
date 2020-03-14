@@ -10,6 +10,7 @@ class DocumentsController < ApplicationController
 
   def new
     @document = current_user.documents.build
+    @categories = Category.all.map{|c| [ c.name, c.id ] }
   end
 
   def create
@@ -37,7 +38,7 @@ class DocumentsController < ApplicationController
   end
 private
   def document_params
-    params.require(:document).permit(:name, :attachment, :description, :status)
+    params.require(:document).permit(:name, :attachment, :description, :status, :category_id)
   end
 
   def disallow_upload?

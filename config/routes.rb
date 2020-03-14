@@ -22,5 +22,7 @@ Rails.application.routes.draw do
   end
   resources :friendships, only: [:create, :destroy, :index, :show, :update]
   resources :users, only: :show
+  resources :categories, only: [:index,:show]
   mount PdfjsViewer::Rails::Engine => "/pdfjs", as: 'pdfjs'
+  # mount ActionCable.server => '/cable'
 end

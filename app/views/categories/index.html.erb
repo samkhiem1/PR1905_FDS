@@ -1,0 +1,12 @@
+<% provide(:title, "Categories") %>
+<h1 style="text-align: center;"> Category</h1>
+<% @categories.each do |category| %>
+  <div class="card-document">
+    <h2 class="card-title card-text">
+      <%= link_to category.name, category_path(category) %>
+    </h2>
+      <span class="badge" style="margin: inherit;">
+        <%= category.documents.count %>
+      </span>
+  </div>
+<% end %>

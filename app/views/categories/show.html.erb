@@ -1,17 +1,6 @@
-<div class="container-search">
-  <%= search_form_for @search, url: root_path do |f| %>
-    <div class="field form-group">
-      <%= f.label :name %>
-      <%= f.text_field :name_cont, class: "form-control" %>
-    </div>
-    <div class="action">
-      <%= f.submit "Search", class: "btn btn-sm btn-primary btn-block" %>
-    </div>
-  <% end %>
-</div>
 <div class="container form-group">
   <table>
-    <% @documents.each_slice(4) do |group_document| %>
+    <% @category.documents.each_slice(4) do |group_document| %>
       <tr>
         <% group_document.each do |document| %>
           <% if document.legal? %>

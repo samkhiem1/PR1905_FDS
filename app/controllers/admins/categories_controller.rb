@@ -5,6 +5,7 @@ class Admins::CategoriesController < Admins::BaseController
   end
 
   def show
+    @category = Category.find_by id: params[:id]
   end
 
   def new
