@@ -6,6 +6,7 @@
       <%= f.text_field :name, class: "form-control form-group" %>
       <%= f.label :Mô_tả   %>
       <%= f.text_field :description, class: "form-control form-group" %>
+<<<<<<< HEAD
       <%= f.label :Tệp_đính_kèm  %>
       <%= f.file_field :attachment, accept: ".pdf, .docx, .doc", class: "form-group" %>
       <%= f.label :Thể_loại %>
@@ -13,5 +14,12 @@
       <%= f.select :category_id, @categories, class: "form-group" %>
       <br>
       <%= f.submit "Tải Lên", class: "btn btn-primary form-group button" %>
+=======
+      <%= f.label :attachment %>
+      <%= f.file_field :attachment, accept: ".pdf, .docx", class: "form-group" %>
+      <%= f.select :category_id, @categories, class: "form-group" %>
+      <br>
+      <%= f.submit "Save", class: "btn btn-primary form-group" %>
+>>>>>>> category
     <% end %>
 </div>
