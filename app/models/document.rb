@@ -19,6 +19,8 @@ class Document < ApplicationRecord
   has_many :comments, dependent: :destroy
   belongs_to :user
   has_many :downloads
+  has_many :favorites, dependent: :destroy
+  belongs_to :category, dependent: :destroy
   acts_as_paranoid
   mount_uploader :attachment, AttachmentUploader
   validates :name, presence: true, uniqueness: true

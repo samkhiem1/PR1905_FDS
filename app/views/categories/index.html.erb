@@ -6,7 +6,7 @@
       <%= link_to category.name, category_path(category) %>
     </h2>
       <span class="badge" style="margin: inherit;">
-        <%= category.documents.count %>
+        <%= category.documents.legal.count %>
       </span>
   </div>
 <% end %>

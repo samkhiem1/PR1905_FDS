@@ -1,8 +1,18 @@
 <div class="container">
   <tr>
     <td><h1><%= @document.name %></td></h1>
-      <td> <%= link_to "download", document_downloads_path(@document), method: :post %></td>
-    <td><iframe src="<%= pdfjs.full_path(file: @document.attachment_url) %>" style="width: 850px; height: 500px;"></iframe></td>
+    <td>
+      <iframe src="<%= pdfjs.full_path(file: @document.attachment_url) %>" style="width: 850px; height: 500px;">
+      </iframe>
+    </td>
+      <td>
+        <%= link_to "download", document_downloads_path(@document), method: :post %>
+        <% if current_user.favorited?(@document) %>
+          <%= link_to "delete", favorite_path, method: :delete %>
+        <% else %>
+          <%= button_to "favorite", favorites_path(@document), params: {document_id: @document.id} %>
+        <% end %>
+      </td>
   </tr>
   <%= render "comments/comments"  %>
   <% if user_signed_in? %>

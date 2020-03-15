@@ -26,6 +26,7 @@ class User < ApplicationRecord
   has_many :downloads
   has_many :friendships
   has_many :friends, through: :friendships
+  has_many :favorites, dependent: :destroy
   enum status: [:actived, :baned]
 
   def username
@@ -39,5 +40,9 @@ class User < ApplicationRecord
   def get_friendship other
     Friendship.find_by(user_id: self.id, friend_id: other.id) ||
       Friendship.find_by(friend_id: self.id, user_id: other.id)
+  end
+
+  def favorited? other
+    self.favorites.find_by(document_id: other).present?
   end
 end

@@ -1,0 +1,10 @@
+<td>
+  <div class="card-document">
+    <%= image_tag(document.thumbnail || "default-thumb.jpeg",class: "card-img-top img-document-thumb" ) %>
+    <div class="card-body card-document-content">
+      <h5 class="card-title card-text">
+      <%= link_to document.name, document_path(document.id) %></h5>
+      <%= link_to "download", document_downloads_path(document), method: :post, class: "btn btn-primary" %>
+    </div>
+  </div>
+</td>

@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     resources :categories
     resources :documents, only: [:index, :update, :destroy]
   end
+  resources :favorites, only: [:create, :destroy, :index]
   resources :friendships, only: [:create, :destroy, :index, :show, :update]
   resources :users, only: :show
   resources :categories, only: [:index,:show]
