@@ -18,7 +18,7 @@ class FavoritesController < ApplicationController
       @favorite.destroy
     else
       @error_message = "Favorite is not found"
-    endFavorite
+    end
   end
   private
 

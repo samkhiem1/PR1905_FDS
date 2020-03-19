@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     resources :dashboards, only: :index
     resources :categories
     resources :documents, only: [:index, :update, :destroy]
+    resources :statics, only: :index
   end
   resources :favorites, only: [:create, :destroy, :index]
   resources :friendships, only: [:create, :destroy, :index, :show, :update]

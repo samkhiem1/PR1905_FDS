@@ -1,10 +1,11 @@
 <td>
-  <div class="card-document">
+  <div id= "card-document<%=favorite_id%>">
     <%= image_tag(document.thumbnail || "default-thumb.jpeg",class: "card-img-top img-document-thumb" ) %>
     <div class="card-body card-document-content">
       <h5 class="card-title card-text">
       <%= link_to document.name, document_path(document.id) %></h5>
       <%= link_to "download", document_downloads_path(document), method: :post, class: "btn btn-primary" %>
+      <%= link_to "delete", favorite_path(favorite_id), method: :delete, remote: true %>
     </div>
   </div>
 </td>

@@ -1,4 +1,4 @@
-<h1 style="text-align: center;color: red"> Favorite </h1>
+<h1 style="text-align: center;"> Favorite </h1>
 <div class="container form-group">
   <% @favorites.each do |favorite| %>
     <% if current_user && current_user == favorite.user %>
@@ -6,7 +6,7 @@
         <% Array(favorite.document).each_slice(4) do |group_document| %>
           <tr>
             <% group_document.each do |document| %>
-              <%= render "favorite", document: document %>
+              <%= render "favorite", document: document, favorite_id: favorite.id %>
             <% end %>
           </tr>
         <% end %>
