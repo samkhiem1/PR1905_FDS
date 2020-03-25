@@ -25,6 +25,8 @@ Rails.application.routes.draw do
   resources :friendships, only: [:create, :destroy, :index, :show, :update]
   resources :users, only: :show
   resources :categories, only: [:index,:show]
+  get "addcoin", to: "payments#show"
+  post "coin", to: "payments#create"
   mount PdfjsViewer::Rails::Engine => "/pdfjs", as: 'pdfjs'
   # mount ActionCable.server => '/cable'
 end

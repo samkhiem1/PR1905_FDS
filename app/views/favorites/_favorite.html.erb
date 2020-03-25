@@ -5,7 +5,7 @@
       <h5 class="card-title card-text">
       <%= link_to document.name, document_path(document.id) %></h5>
       <%= link_to "download", document_downloads_path(document), method: :post, class: "btn btn-primary" %>
-      <%= link_to "delete", favorite_path(favorite_id), method: :delete, remote: true %>
+      <%= link_to "Unfavorite", favorite_path(favorite_id), method: :delete, remote: true, class: "btn btn-primary"%>
     </div>
   </div>
 </td>
