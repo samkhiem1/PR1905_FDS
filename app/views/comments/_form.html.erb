@@ -1,8 +1,10 @@
 <div class="row" style="row=5 ">
   <div class="col-md-6 col-md-offset-3 form-group">
     <%= form_for [@document, @document.comments.build ], remote: true do |f|%>
-      <%= f.text_field :content, class: 'form-control form-group comments' %>
-      <%= f.submit class: "btn btn-primary form-group" %>
+        <%= f.text_field :content, class: 'form-control form-group' %>
+      <div style="margin-left: 35%">
+        <%= f.submit class: "btn btn-primary form-group" %>
+      </div>
     <% end %>
   </div>
 </div>

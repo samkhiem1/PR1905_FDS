@@ -16,8 +16,9 @@
       <div class="alert alert-<%= message_type %>" style="padding-top: 60px;"><%= message %></div>
     <% end %>
     <%= render "layouts/notice" %>
-    <div class="container-page">
+    <div class="container-page" style="padding-bottom: 200px">
       <%= yield %>
     </div>
+      <%= render "layouts/footer" %>
   </body>
 </html>

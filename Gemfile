@@ -5,6 +5,7 @@ ruby '2.6.3'
 gem 'slim-rails'
 gem 'ransack'
 gem 'carrierwave'
+gem 'mini_magick'
 gem 'bootstrap-sass', '3.4.1'
 gem "paranoia"
 gem 'devise'
@@ -14,7 +15,9 @@ gem 'pdfjs_viewer-rails'
 gem 'rmagick'
 gem "sidekiq"
 gem 'whenever', require: false
-gem 'figaro'
+gem "figaro"
+gem 'adminlte-generators'
+gem "font-awesome-rails"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.4'
 # Use sqlite3 as the database for Active Record

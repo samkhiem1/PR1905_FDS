@@ -4,9 +4,9 @@
   <%= form_for(@category, url: links) do |f| %>
 
       <%= render "shared/error_messages", object: f.object %>
-      <%= f.label :name %>
-      <%= f.text_field :name, class: 'form-control'%>
-      <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+      <%= f.label :Tên %>
+      <%= f.text_field :name, class: 'form-control category-form'%>
+      <%= f.submit yield(:button_text), class: "btn btn-primary coin" %>
     <% end %>
   </div>
 </div>

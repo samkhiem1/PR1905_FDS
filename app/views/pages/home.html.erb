@@ -1,27 +1,31 @@
 <div class="container-search">
   <%= search_form_for @search, url: root_path do |f| %>
     <div class="field form-group">
-      <%= f.label :name %>
+      <%= f.label :Tìm_Kiếm %>
       <%= f.text_field :name_cont, class: "form-control" %>
     </div>
     <div class="action">
-      <%= f.submit "Search", class: "btn btn-sm btn-primary btn-block" %>
+      <%= f.submit "Tìm kiếm", class: "btn btn-sm btn-primary btn-block" %>
     </div>
   <% end %>
 </div>
 <div class="container form-group">
   <table>
-    <% @documents.each_slice(4) do |group_document| %>
+    <% @documents.each_slice(5) do |group_document| %>
       <tr>
         <% group_document.each do |document| %>
           <% if document.legal? %>
             <td>
               <div class="card-document">
-                <%= image_tag(document.thumbnail || "default-thumb.jpeg",class: "card-img-top img-document-thumb" ) %>
+                <% if document.check_type %>
+                  <%= image_tag(document.thumbnail || "default-thumb.jpeg" ,class: "card-img-top img-document-thumb" ) %>
+                <% else %>
+                   <%= image_tag("word.jpeg", class: "thumb_word") %>
+                <% end %>
                 <div class="card-body card-document-content">
-                  <h5 class="card-title card-text">
-                    <%= link_to document.name, document_path(document.id) %></h5>
-                 <%= link_to "download", document_downloads_path(document), method: :post, class: "btn btn-primary" %>
+                  <h3 class="card-title card-text">
+                  <%= link_to document.name, document_path(document.id) %></h3>
+                  <%= link_to "Tải xuông", document_downloads_path(document), method: :post, class: "btn btn-primary" %>
                 </div>
               </div>
             </td>

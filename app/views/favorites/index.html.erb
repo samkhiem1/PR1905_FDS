@@ -1,0 +1,16 @@
+<h1 style="text-align: center;"> Mục yêu thích</h1>
+<div class="container form-group", style="padding-bottom: 500px">
+  <% @favorites.each do |favorite| %>
+    <% if current_user && current_user == favorite.user %>
+      <table>
+        <% Array(favorite.document).each_slice(4) do |group_document| %>
+          <tr>
+            <% group_document.each do |document| %>
+              <%= render "favorite", document: document, favorite_id: favorite.id %>
+            <% end %>
+          </tr>
+        <% end %>
+      </table>
+    <% end %>
+  <% end %>
+</div>

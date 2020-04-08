@@ -19,9 +19,11 @@ class Document < ApplicationRecord
   has_many :comments, dependent: :destroy
   belongs_to :user
   has_many :downloads
+  has_many :favorites, dependent: :destroy
+  belongs_to :category, dependent: :destroy
   acts_as_paranoid
   mount_uploader :attachment, AttachmentUploader
-  validates :name, presence: true, uniqueness: true
+  validates :name, presence: true
   validates :description, presence: true
   validates :attachment, presence: true
   enum status: [:pending, :legal, :illegal]
@@ -29,5 +31,9 @@ class Document < ApplicationRecord
   scope :created_in_month, -> do
     now = Time.zone.now
     where created_at: now.beginning_of_month..now
+  end
+
+  def check_type
+    self.attachment.identifier.include?("pdf")
   end
 end

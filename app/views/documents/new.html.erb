@@ -1,13 +1,17 @@
-<div class="container-1">
+<h1 style="text-align: center;"> Tải lên tài liệu</h1>
+<div class="container-1", style="padding-bottom: 200px">
   <%= form_for @document, html: {multipart: true} do |f| %>
     <%= render "shared/error_messages", object: f.object %>
-      <%= f.label :name %>
+      <%= f.label :Tên %>
       <%= f.text_field :name, class: "form-control form-group" %>
-      <%= f.label :description %>
+      <%= f.label :Mô_tả   %>
       <%= f.text_field :description, class: "form-control form-group" %>
-      <%= f.label :attachment %>
-      <%= f.file_field :attachment, accept: ".pdf, .docx" %>
+      <%= f.label :Tệp_đính_kèm  %>
+      <%= f.file_field :attachment, accept: ".pdf, .docx, .doc", class: "form-group" %>
+      <%= f.label :Thể_loại %>
       <br>
-      <%= f.submit "Save", class: "btn btn-primary" %>
+      <%= f.select :category_id, @categories, class: "form-group" %>
+      <br>
+      <%= f.submit "Tải Lên", class: "btn btn-primary form-group button" %>
     <% end %>
 </div>

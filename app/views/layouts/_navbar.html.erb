@@ -3,25 +3,27 @@
     <%= link_to "E Document", root_path, id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Upload Document",new_document_path %></li>
+        <li><%= link_to "Tải lên tài liêu",new_document_path %></li>
+        <li> <%= link_to "Các thể loại", categories_path %></li>
         <% if user_signed_in? %>
-          <li><%= link_to "My uploaded document", documents_path %></li>
-          <li><%= link_to "Friends", friendships_path %></li>
+          <li><%= link_to "Mua Coin", addcoin_path %></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <%= current_user.username %> <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
               <li><%= link_to "Profile", '#' %></li>
-              <li><%= link_to "Settings", edit_user_registration_path %></li>
+              <li><%= link_to "Tài liệu của bạn", documents_path %></li>
+              <li><%= link_to "Yêu thích", favorites_path %></li>
+              <li><%= link_to "Chỉnh sửa", edit_user_registration_path %></li>
               <li class="divider"></li>
               <li>
-                <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+                <%= link_to "Đăng xuất", destroy_user_session_path, method: :delete %>
               </li>
             </ul>
           </li>
         <% else %>
-          <li><%= link_to "Log in", new_user_session_path %></li>
+          <li><%= link_to "Đăng nhập", new_user_session_path %></li>
         <% end %>
       </ul>
     </nav>

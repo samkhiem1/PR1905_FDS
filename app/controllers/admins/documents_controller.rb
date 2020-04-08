@@ -3,6 +3,10 @@ class Admins::DocumentsController < Admins::BaseController
     @documents = Document.all
   end
 
+  def show
+    @document = Document.find_by id: params[:id]
+  end
+
   def update
     @document = Document.find_by id: params[:id]
     unless @document

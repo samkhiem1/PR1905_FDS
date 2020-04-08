@@ -1,0 +1,11 @@
+<td>
+  <div id= "card-document<%=favorite_id%>">
+    <%= image_tag(document.thumbnail || "default-thumb.jpeg",class: "card-img-top img-document-thumb" ) %>
+    <div class="card-body card-document-content">
+      <h5 class="card-title card-text">
+      <%= link_to document.name, document_path(document.id) %></h5>
+      <%= link_to "Tải xuống", document_downloads_path(document), method: :post, class: "btn btn-primary" %>
+      <%= link_to "Bỏ yêu thích", favorite_path(favorite_id), method: :delete, remote: true, class: "btn btn-primary"%>
+    </div>
+  </div>
+</td>

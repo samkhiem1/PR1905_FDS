@@ -1,0 +1,14 @@
+<div id="container-add">
+  <h1 style="text-align: center;margin-top: 30px"> Mua Coin </h1>
+  <div id="formcoin">
+    <div>
+      <h4 id="total_coin">Số tiền hiện tại: <%= current_user.total_coin %> Coin</h4>
+      <div id="Coin1">
+        <%= form_tag coin_path do %>
+          <%= text_field_tag :serial_number %>
+          <%= submit_tag "Nạp", class: "btn-success" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<div>

@@ -12,4 +12,9 @@
 class Download < ApplicationRecord
   belongs_to :user
   belongs_to :document
+
+  scope :created_in_month_download, -> do
+    now = Time.zone.now
+    where created_at: now.beginning_of_month..now
+  end
 end

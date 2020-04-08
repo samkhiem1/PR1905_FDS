@@ -5,17 +5,20 @@ class DocumentsController < ApplicationController
   end
 
   def show
+    @favorites = Favorite.all
     @document = Document.includes(comments: :user).find(params[:id])
   end
 
   def new
     @document = current_user.documents.build
+    @categories = Category.all.map{|c| [ c.name, c.id ] }
   end
 
   def create
     @document = current_user.documents.build(document_params)
     if disallow_upload?
       flash.now[:danger] = "You has been uploaded 10 documents in this month."
+      @categories = Category.all.map{|c| [ c.name, c.id ] }
       render "new" and return
     end
     if @document.save
@@ -24,7 +27,8 @@ class DocumentsController < ApplicationController
       flash[:success]= "Successfully uploaded."
       redirect_to documents_path
     else
-      flash.now[:danger] = "Upload failed"
+      flash.now[:danger] = "Upload failed."
+      @categories = Category.all.map{|c| [ c.name, c.id ] }
       render "new"
     end
   end
@@ -37,7 +41,7 @@ class DocumentsController < ApplicationController
   end
 private
   def document_params
-    params.require(:document).permit(:name, :attachment, :description, :status)
+    params.require(:document).permit(:name, :attachment, :description, :status, :category_id)
   end
 
   def disallow_upload?

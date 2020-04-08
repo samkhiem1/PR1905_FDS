@@ -3,6 +3,6 @@
   <%= comment.user.username %>:
   <%= comment.content %>
   <% if current_user && current_user == comment.user %>
-    <td><%= link_to "Delete", document_comment_path(comment.document, comment), method: :delete, remote: true %></td>
+    <td><%= link_to "Xóa", document_comment_path(comment.document, comment), method: :delete, remote: true %></td>
   <% end %>
 </div>

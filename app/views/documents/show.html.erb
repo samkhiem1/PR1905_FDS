@@ -1,11 +1,30 @@
-<div class="container">
-  <tr>
-    <td><h1><%= @document.name %></td></h1>
-      <td> <%= link_to "download", document_downloads_path(@document), method: :post %></td>
-    <td><iframe src="<%= pdfjs.full_path(file: @document.attachment_url) %>" style="width: 850px; height: 500px;"></iframe></td>
-  </tr>
-  <%= render "comments/comments"  %>
-  <% if user_signed_in? %>
-    <%= render "comments/form" %>
-  <% end %>
+<div class="container" >
+  <div class="container-showdocument">
+    <td><h1 style="color: #765ec9; text-align: center;"><%= @document.name %></h1></td>
+      <div id="time">
+        <p> Đăng ngày: <span style="color:red"><%= @document.created_at.strftime("%I: %M %p")%></span></p>
+        <p> Người tải lên: <%= link_to @document.user.username%></p>
+      </div>
+      <% if @document.check_type %>
+        <iframe src="<%= pdfjs.full_path(file: @document.attachment_url) %>" style="width: 850px; height: 500px;">
+        </iframe>
+        <% else %>
+          <%= image_tag("word.jpeg", class: "word") %>
+      <% end %>
+      <div class="container-favor">
+        <% if user_signed_in? %>
+            <%= button_to "Yêu thích ", favorites_path(@document), params: {document_id: @document.id}, class: "btn btn-primary form-group" unless  current_user.favorited?(@document) %>
+        <% end %>
+        <div style="margin-top: 10px">
+          <%= link_to "Tải Xuống", document_downloads_path(@document), method: :post, class: "btn btn-primary form-group"%>
+        </div>
+      </div>
+    <div id="description">Mô Tả: <%= @document.description%></div>
+    <div id="comments">
+      <p>Bình luân:<%= render "comments/comments"%></p>
+    </div>
+    <% if user_signed_in? %>
+      <div id="form_comment"><%= render "comments/form" %></div>
+    <% end %>
+  </div>
 </div>

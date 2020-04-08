@@ -1,44 +1,30 @@
-<% @documents.each do | document| %>
-  <%= render 'shared/error_messages', object: document %>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
-     <br>
-    </div>
-      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
-        <div class="panel panel-info">
-          <div class="panel-heading">
-            <h3 class="panel-title">Documents</h3>
-          </div>
-          <div class="panel-body">
-            <div class="row">
-              <div class=" col-md-9 col-lg-9 ">
-                <table class="table table-user-information">
-                  <tbody>
-                    <tr>
-                      <td> Document Name </td>
-                      <td><%= document.name %></td>
-                    </tr>
-                    <tr>
-                      <td>Desciption</td>
-                      <td><%= document.description %></td>
-                    </tr>
-                    <tr>
-                      <td>Status: </td>
-                      <td id="status-document-<%= document.id%>"> <%= document.status %> </td>
-                    </tr>
-                  </tbody>
-                </table>
-                  <% if document.pending? %>
-                    <%= button_to "legal", admins_document_path(document, legal: true), method: :patch, remote: true, class: "button-legal-#{document.id}" %>
-                    <%= button_to "illegal", admins_document_path(document, illegal: true), method: :patch, remote: true, class: "button-legal-#{document.id}" %>
-                  <% end %>
-              </div>
-                <%= link_to "Delete", admins_document_path(document), method: :delete, confirm: "Are you sure you want to delete #{document.name}?" %>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+ <div class="card">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Tên tài Liệu </th>
+          <th scope="col">Trạng Thái </th>
+          <th scope="col">Xóa </th>
+          <th scope="col">Chọn </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @documents.each do | document| %>
+          <tr>
+            <th scope="row"><%= document.id %></th>
+            <td> <%= link_to document.name, admins_document_path(document) %> </td>
+            <td id="status-document-<%= document.id%>"> <%= document.status %> </td>
+            <td><%= link_to "Delete", admins_document_path(document), method: :delete, confirm: "Are you sure you want to delete #{document.name}?", class: "btn btn-sm btn-danger" %> </td>
+            <td>
+              <% if document.pending? %>
+                <%= button_to "legal", admins_document_path(document, legal: true), method: :patch, remote: true, class: "button-legal-#{document.id} btn btn-sm btn-primary" %>
+                <br>
+                <%= button_to "illegal", admins_document_path(document, illegal: true), method: :patch, remote: true, class: "button-legal-#{document.id} btn btn-sm btn-primary" %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
-<% end %>

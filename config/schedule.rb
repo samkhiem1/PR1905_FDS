@@ -13,19 +13,7 @@
 #   rake "some:great:rake:task"
 # end
 #
-# every "0 0 31 1,3,5,7,8,10,12 *" do
-#   runner "UpdateThumbnailWorker.perform_at(0)"
-# end
-
-# every "0 0 30 4,6,9,11 *" do
-#   runner "UpdateThumbnailWorker.perform_at(0)"
-# end
-
-# every "0 0 28 2 *" do
-#   runner "UpdateThumbnailWorker.perform_at(0)"
-# end
-
-every 3.days do
+every 1.days do
   runner "SendEmailIfUserNotLoginThreeDaysWoker.perform_at(0)"
 end
 
